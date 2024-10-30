@@ -1,29 +1,31 @@
-# include <stdio.h>
-int main(void){
-    char string[100];
-    int count=0;
-    char temp;
-    
-    printf("Enter the Name:");
-    gets(string);
-    char *ptr = string;
-    for (int i=0;*(ptr+i)!='\0';i++){
-        count++;
+#include <stdio.h>
+int main()
+{
+    char str[100];
+    char *start, *end,temp;
+    int length=0;
+    printf("Enter String:\n");
+    scanf("%s", str);
+    start = str;
+    while (*start != '\0')
+    {
+        start++;
+        length++;
     }
-    
-    printf("\n");
-    printf("The  Length of This Array is : %d\n",count);
-  
-    printf("Original Array: %s \n",string);
-    int end=count-1;
-    
-    for (int i=0;i<(count)/2;i++){
-        temp = *(ptr+i);
-        *(ptr+i)= *(ptr+end);
-        *(ptr+end)=temp;
-        end--;
-        
-    }
+    printf("Length is %d\n", length);
 
-    printf("Reversed Array : %s \n ",ptr);
+    start = str;
+    end = str + length-1;
+    while (start < end)
+    {
+        temp = *start;
+        *start = *end;
+        *end = temp;
+
+        start++;
+        end--;
+    }
+    printf("Reverse string is: %s\n ", str);
+
+    return 0;
 }
